@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-overlay"></div>
+    
+    <div class="container">
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Search for a city...">
+            <button id="search-btn"><i class="fas fa-search"></i></button>
+        </div>
+        
+        <div class="weather-container">
+            <div class="current-weather">
+                <div class="weather-header">
+                    <div class="location">
+                        <h1 id="city">Loading...</h1>
+                        <span id="country"></span>
+                    </div>
+                    <button class="change-location"><i class="fas fa-map-marker-alt"></i> Change</button>
+                </div>
+                
+                <div class="date-time">
+                    <div id="current-time">--:--</div>
+                    <div id="current-date">Loading...</div>
+                </div>
+                
+                <div class="weather-info">
+                    <div class="temperature-container">
+                        <div id="temperature">--°</div>
+                        <div class="units">
+                            <button id="celsius" class="active">°C</button>
+                            <span>|</span>
+                            <button id="fahrenheit">°F</button>
+                        </div>
+                    </div>
+                    <div class="condition-container">
+                        <img id="weather-icon" src="" alt="Weather icon" class="weather-icon">
+                        <div id="condition">Loading...</div>
+                    </div>
+                </div>
+                
+                <div class="day-parts">
+                    <div class="day-part">
+                        <div class="day-part-name">Morning</div>
+                        <div id="morning-temp" class="day-part-temp">--°</div>
+                    </div>
+                    <div class="day-part">
+                        <div class="day-part-name">Afternoon</div>
+                        <div id="afternoon-temp" class="day-part-temp">--°</div>
+                    </div>
+                    <div class="day-part">
+                        <div class="day-part-name">Evening</div>
+                        <div id="evening-temp" class="day-part-temp">--°</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="weather-tabs">
+                <div class="tabs">
+                    <button class="tab active" data-tab="hourly">Hourly</button>
+                    <button class="tab" data-tab="daily">Daily</button>
+                    <button class="tab" data-tab="details">Details</button>
+                </div>
+                
+                <div id="hourly-details" class="weather-details">
+                    <div class="forecast-scroll">
+                        <div id="hourly-forecast-container" class="forecast-container"></div>
+                    </div>
+                </div>
+                
+                <div id="daily-details" class="weather-details hidden">
+                    <div class="forecast-scroll">
+                        <div id="daily-forecast-container" class="forecast-container"></div>
+                    </div>
+                </div>
+                
+                <div id="details-details" class="weather-details hidden">
+                    <div class="details-grid">
+                        <div class="detail-item">
+                            <div class="detail-label">Humidity</div>
+                            <div id="humidity" class="detail-value">--%</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Pressure</div>
+                            <div id="pressure" class="detail-value">-- mb</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Visibility</div>
+                            <div id="visibility" class="detail-value">-- km</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Wind Speed</div>
+                            <div id="wind" class="detail-value">-- km/h</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">UV Index</div>
+                            <div id="uv-index" class="detail-value">-- of 10</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Dew Point</div>
+                            <div id="dew-point" class="detail-value">--°</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timezone-selector">
+                <div class="timezone-label">Timezone:</div>
+                <div class="timezones">
+                    <button class="timezone active" data-timezone="local">Local</button>
+                    <button class="timezone" data-timezone="EST">EST</button>
+                    <button class="timezone" data-timezone="GMT">GMT</button>
+                    <button class="timezone" data-timezone="IST">IST</button>
+                    <button class="timezone" data-timezone="PDT">PDT</button>
+                    <button class="timezone" data-timezone="JST">JST</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="loading-screen">
+        <div class="loader"></div>
+        <div>Loading weather data...</div>
+    </div>
+    
+    <div class="error-container">
+        <div class="error-icon"><i class="fas fa-exclamation-circle"></i></div>
+        <div id="error-message">Failed to fetch weather data.</div>
+        <button id="retry-btn">Retry</button>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
